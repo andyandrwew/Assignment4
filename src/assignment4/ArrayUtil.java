@@ -87,12 +87,35 @@ public class ArrayUtil
 				count++;
 			}
 		}
-		
-		public int getCount()
+
+		public static void sort(int[] list)
+		{
+			int r = list.length;
+			if (list.length <= 1)
+			{
+				return;
+			}
+			int[] left = new int[(r / 2)];
+			int[] right = new int[r - r / 2];
+			for (int i = 0; i < left.length; i++)
+			{
+				left[i] = list[i];
+			}
+			for (int i = 0; i < right.length; i++)
+			{
+				right[i] = list[left.length + i];
+			}
+
+			sort(left);
+			sort(right);
+			merge(left, right, list);
+		}
+
+		public static int getCount()
 		{
 			return count;
 		}
-		
+
 		public static void resetCounter()
 		{
 			count = 0;
@@ -111,6 +134,6 @@ class MergeSortDemo
 		int[] a = ArrayUtil.randomIntArray(10000, 10000);
 		MergeSorter.resetCounter();
 		MergeSorter.sort(a);
-		System.out.println("Array size: 10000; comparisons: " + MergeSorter.getCounter());
+		System.out.println("Array size: 10000; comparisons: " + MergeSorter.getCount());
 	}
 }
