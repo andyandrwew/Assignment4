@@ -36,7 +36,7 @@ public class BubbleSort
 			}
 			
 			
-			BubbleSort bubbleSort = new BubbleSort(randArray);
+			new BubbleSort(randArray);
 			
 			for(int i = 0; i < randArray.length - 1; i++)
 			{
